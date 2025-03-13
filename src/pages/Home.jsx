@@ -29,6 +29,7 @@ export default function Home() {
     })
   }
 
-  return ( <WelcomCart isLoading={isLoading} navig={handleNaviagte}/>
-    )
+  return ( 
+    <WelcomCart isLoading={isLoading} navig={handleNaviagte}/>
+  )
 }

@@ -5,28 +5,29 @@ export default function WelcomCart({ navig, isLoading }) {
     <div className="box">
       <div className="card-box">
         <div className="row">
-          <h1>welcome in quiz game</h1>
+          <h1>Welcome in Quiz Game</h1>
         </div>
         <div className="row">
-          <p>
-            you have 10 seconds to answer the question asked with truth or
-            false. <br /> after this time we automatically move on to the next question <br />
-            NB: a question passed without an answer will not award you any
-            points
-          </p>
+          <ol>
+            <li>You will be given 10 questions to answer</li>
+            <li>Each question is to be answered in 10 second and if after 10secs you 
+              <br />haven't answered the question, it authomatically move to another question</li>
+            <li>Answer (True or False)</li>
+            <li><strong>NB:</strong> A question pass without being answered awards no point</li>
+          </ol>
         </div>
         <div className="row">
           {isLoading ? (
             <button
               onClick={() => navig()}
-              className="btn btn-outline-success bouton"
+              className="btn-bouton"
             >
               start game
             </button>
           ) : (
             <button
               onClick={() => navig()}
-              className="btn btn-outline-success bouton disabled"
+              className="btn-disabled"
             >
               start game
             </button>

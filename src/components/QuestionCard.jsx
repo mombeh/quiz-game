@@ -15,54 +15,52 @@ export default function QuestionCard({
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&apos;");
   }
-  console.log("teste",escapeHtml("&amp; est une chaîne avec des espaces et des caractères spéciaux &amp;."))
+  console.log("teste", escapeHtml("&amp; est une chaîne avec des espaces et des caractères spéciaux &amp;."))
 
   return (
     <div className="box">
-      <div className="card-box question-box">
-        <div className="row">
-          <h3>
-            question{" "}
-            <span>
-              {number}/{totalQuestion}
-            </span>
-          </h3>
-          <h3> temps de reponse: {time} </h3>
+      <div className="row-time">
+        <h3>
+          Question{" "}
+          <span>
+            {number}/{totalQuestion}
+          </span>
+        </h3>
+        <h3> Time given: {time} </h3>
+      </div>
+      <div className="rowm">
+        <div className="col-6">
+          <h4>
+            Category : <span>{question?.category}</span>
+          </h4>
         </div>
-        <div className="row g-1 mt-1">
-          <div className="col-6">
-            <h4>
-              category : <span>{question?.category}</span>
-            </h4>
-          </div>
-          <div className="col-6">
-            <h4>
-              difficulty : <span> {question?.difficulty} </span>
-            </h4>
-          </div>
+        <div className="col-6">
+          <h4>
+            Difficulty : <span> {question?.difficulty} </span>
+          </h4>
         </div>
-        <div className="row g-1">
-          <h3 className="questipn">{escapeHtml(question.question)}</h3>
+      </div>
+      <div className="questions">
+        <span className="question">{escapeHtml(question.question)}</span>
+      </div>
+      <div className="row-quest">
+        <div className="col">
+          <button
+            onClick={() => next(question, "True")}
+            className="btn"
+          >
+            {" "}
+            True{" "}
+          </button>
         </div>
-        <div className="row g-1 mt-2">
-          <div className="col-6">
-            <button
-              onClick={() => next(question, "True")}
-              className="btn btn-outline-success bouton"
-            >
-              {" "}
-              True{" "}
-            </button>
-          </div>
-          <div className="col-6">
-            <button
-              onClick={() => next(question, "False")}
-              className="btn btn-outline-danger bouton "
-            >
-              {" "}
-              False
-            </button>
-          </div>
+        <div className="col1">
+          <button
+            onClick={() => next(question, "False")}
+            className="btn-btn "
+          >
+            {" "}
+            False
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,4 @@
-
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import Questionnaire from "./pages/Questionnaire";
