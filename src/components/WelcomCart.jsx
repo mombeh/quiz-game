@@ -9,7 +9,7 @@ export default function WelcomCart({ navig, isLoading }) {
         </div>
         <div className="row">
           <ol>
-            <li>You will be given 15 questions to answer</li>
+            <li>You will be given 10 questions to answer</li>
             <li>Each question is to be answered in 15 second and if after 15 seconds you 
               <br />haven't answered the question, it authomatically move to another question</li>
             <li>Answer (True or False)</li>

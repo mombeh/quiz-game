@@ -19,7 +19,10 @@ export default function ScorePage() {
 
   return (
     <>
-      <ResultList tabResponse={tabReponse} score={score} star={handleStar} />
+      <ResultList 
+      tabResponse={tabReponse} 
+      score={score} 
+      star={handleStar} />
     </>
   );
 }

@@ -59,21 +59,11 @@ li {
   justify-self: center;
 }
 
-.col button {
-  padding: 8px;
-  width: 100px;
-  height: 40px;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  background: #688968;
-  margin-top: 80px;
-}
-
 .rowm h4{
   margin-top: 30px;
 }
 
+.col button,
 .col1 button {
   padding: 8px;
   width: 100px;
@@ -116,7 +106,7 @@ li {
  line-height: 20px;
 }
 
-.row-btn {
+.row-btn button{
   margin-top: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -128,7 +118,7 @@ li {
   font-size: 20px;
   height: 50px;
   margin-bottom: 10px;
-  margin-left: 400px;
+  margin-left: 160px;
 }
 
 .card-list {
@@ -163,4 +153,58 @@ th:last-child, td:last-child {
 
 tr:hover {
   background-color: #f5f5f5; 
+}
+
+@media (max-width: 475px){
+  .box {
+    width: 300px;
+    font-size: 13px;
+  }
+
+  ol {
+    margin-top: 10px;
+    
+  }
+
+  ol li {
+    line-height: 17px;
+  }
+
+  .row button {
+    margin-top: 20px;
+  }
+
+  .card-list {
+    padding: 10px;
+    margin-top: 100px;
+    font-size: 13px;
+    justify-self: center;
+    width: 100%;
+
+  }
+
+  .row-btn button{
+    padding: 5px;
+    justify-self: center;
+    width: 100px;
+    font-size: 14px;
+  
+  }
+
+  th, td {
+    text-align: left;
+  }
+
+  td {
+    width: 50px;
+  }
+
+  .col button,
+  .col1 button {
+    margin-top: 20px;
+  }
+
+  .questions {
+    margin-top: 10px;
+  }
 }

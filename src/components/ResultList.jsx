@@ -34,9 +34,11 @@ export default function ResultList({ tabResponse, score, star }) {
             })}
           </tbody>
         </table>
-        <button onClick={() => star()} className="row-btn ">
-          Restard
-        </button>
+        <div className="row-btn ">
+          <button onClick={() => star()}>
+            Restard
+          </button>
+        </div>
       </div>
     </div>
   );

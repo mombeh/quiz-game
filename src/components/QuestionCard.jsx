@@ -9,13 +9,8 @@ export default function QuestionCard({
 }) {
   function escapeHtml(word) {
     return word
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&apos;");
+
   }
-  console.log("taste", escapeHtml("&amp; is chain with space and special characters &amp;."))
 
   return (
     <div className="box">
