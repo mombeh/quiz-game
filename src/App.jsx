@@ -7,9 +7,6 @@ import { UseData } from "./context/context";
 
 
 function App() {
-
-  
-
   return (
     <UseData>
     <BrowserRouter>

@@ -15,7 +15,7 @@ export default function QuestionCard({
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&apos;");
   }
-  console.log("teste", escapeHtml("&amp; est une chaîne avec des espaces et des caractères spéciaux &amp;."))
+  console.log("taste", escapeHtml("&amp; is chain with space and special characters &amp;."))
 
   return (
     <div className="box">
