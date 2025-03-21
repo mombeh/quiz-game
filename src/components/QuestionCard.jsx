@@ -30,11 +30,6 @@ export default function QuestionCard({
             Category : <span>{question?.category}</span>
           </h4>
         </div>
-        <div className="col-6">
-          <h4>
-            Difficulty : <span> {question?.difficulty} </span>
-          </h4>
-        </div>
       </div>
       <div className="questions">
         <span className="question">{escapeHtml(question?.question)}</span>

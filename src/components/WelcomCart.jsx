@@ -5,7 +5,7 @@ export default function WelcomCart({ navig, isLoading }) {
     <div className="box">
       <div className="card-box">
         <div className="row">
-          <h1>Welcome in Quiz Game</h1>
+          <h1>Welcome to my quiz app</h1>
         </div>
         <div className="row">
           <ol>
