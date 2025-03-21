@@ -1,4 +1,5 @@
 import { PropTypes } from "prop-types";
+import he from "he"
 
 export default function QuestionCard({
   next,
@@ -8,7 +9,7 @@ export default function QuestionCard({
   time,
 }) {
   function escapeHtml(word) {
-    return word
+    return he.decode(word)
 
   }
 
@@ -36,7 +37,7 @@ export default function QuestionCard({
         </div>
       </div>
       <div className="questions">
-        <span className="question">{escapeHtml(question.question)}</span>
+        <span className="question">{escapeHtml(question?.question)}</span>
       </div>
       <div className="row-quest">
         <div className="col">

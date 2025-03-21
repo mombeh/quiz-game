@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
+import he from "he"
 
 export default function ResultList({ tabResponse, score, star }) {
+
+  function escapeHtml(word) {
+    return he.decode(word)
+
+  }
   return (
+    
     <div className="card-list">
       <div className="card-header ">
         <h2>Scored : {score} / 10{" "}</h2>
@@ -15,7 +22,7 @@ export default function ResultList({ tabResponse, score, star }) {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">N_o</th>
+              {/* <th scope="col">N_o</th> */}
               <th scope="col">quetion</th>
               <th scope="col">correct_answer</th>
               <th scope="col">your answer</th>
@@ -25,8 +32,8 @@ export default function ResultList({ tabResponse, score, star }) {
             {tabResponse.map((item, index) => {
               return (
                 <tr key={index + 1}>
-                  <th scope="row">{index + 1}</th>
-                  <td> {item.question}</td>
+                  {/* <th scope="row">{index + 1}</th> */}
+                  <td> {escapeHtml(item.question)}</td>
                   <td>{item.correct_answer}</td>
                   <td> {item.yours} </td>
                 </tr>
@@ -36,7 +43,7 @@ export default function ResultList({ tabResponse, score, star }) {
         </table>
         <div className="row-btn ">
           <button onClick={() => star()}>
-            Restard
+            Restart
           </button>
         </div>
       </div>
