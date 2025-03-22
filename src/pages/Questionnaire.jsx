@@ -1,5 +1,5 @@
 import QuestionCard from "../components/QuestionCard";
-import { useState, useContext,useEffect, useCallback } from "react";
+import { useState, useContext,useEffect } from "react";
 import { DataContext } from "../context/context";
 import { useNavigate } from "react-router";
 import {useParams} from 'react-router'
@@ -12,7 +12,7 @@ export default function Questionnaire() {
     useContext(DataContext);
   const navigate = useNavigate();
 
-  const handleNext = useCallback((question, response) => {
+  const handleNext = (question, response) => {
     setTime(15)
     const newQuestion = { ...question, yours: response };
     setTabReponse([...tabReponse, newQuestion]);
@@ -21,15 +21,7 @@ export default function Questionnaire() {
     }
       navigate(`/Questionnaire/${number + 1}`);
 
-    },[navigate, number, setTabReponse, tabReponse])
-
-
-
-
-
-
-
-    
+    }
   
 
   useEffect(()=>{
@@ -44,7 +36,7 @@ export default function Questionnaire() {
     return ()=>{
       clearTimeout(t)
     }
-  },[handleNext, number, tabQuestions, time])
+  },[time])
 
   return (
     <QuestionCard
