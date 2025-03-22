@@ -9,7 +9,7 @@ export default function QuestionCard({
   time,
 }) {
   function escapeHtml(word) {
-    return word ? he.decode(word) : ""; // Default to an empty string
+    return he.decode(word)
   }
   
   return (
