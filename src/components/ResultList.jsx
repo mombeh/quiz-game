@@ -13,7 +13,7 @@ export default function ResultList({ tabResponse, score, star }) {
       <div className="card-header ">
         <h2>Scored : {score} / 10{" "}</h2>
         {score > 5 ? (
-          <h2 className="mx-2">You Win</h2>
+          <h2 className="mx-2">You Won</h2>
         ) : (
           <h2 className="mx-2 ">You Loose</h2>
         )}
@@ -23,9 +23,9 @@ export default function ResultList({ tabResponse, score, star }) {
           <thead>
             <tr>
               {/* <th scope="col">N_o</th> */}
-              <th scope="col">quetion</th>
-              <th scope="col">correct_answer</th>
-              <th scope="col">your answer</th>
+              <th scope="col">Question</th>
+              <th scope="col">Correct answer</th>
+              <th scope="col">Your answer</th>
             </tr>
           </thead>
           <tbody>

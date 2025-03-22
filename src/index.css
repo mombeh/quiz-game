@@ -119,14 +119,13 @@ li {
   font-weight: bolder;
   width: 150px;
   font-size: 18px;
-  height: 70px;
-  margin-bottom: 10px;
+  height: 50px;
   margin: 10px;
 }
 
 .card-list {
   padding: 20px;
-  width: 80vw;
+  width: 60vw;
   margin-top: 50px;
   justify-self: center;
   background-color: #5c2438;
@@ -135,9 +134,14 @@ li {
 }
 
 .card-body {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   margin-top: 30px;
 
+}
+
+.table {
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 th, td {
@@ -145,6 +149,7 @@ th, td {
   text-align: left;
   border-bottom: 1px solid #ddd; 
   border-right: 1px solid #ccc; 
+  border-left: 1px solid #ccc;
 }
 
 .card-body button {
@@ -160,7 +165,7 @@ tr:hover {
   color: black;
 }
 
-@media (max-width: 425px){
+@media (max-width: 768px){
   .box {
     width: 300px;
     font-size: 13px;
@@ -219,10 +224,9 @@ tr:hover {
   }
 
   .row-btn button{
-    padding: 5px;
-    width: 80px;
+    width: 150px;
     font-size: 12px;
-    margin-left: 120px;
+    margin-left: 100px;
   }
 
   th, td {

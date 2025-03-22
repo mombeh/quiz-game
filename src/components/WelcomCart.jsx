@@ -22,14 +22,14 @@ export default function WelcomCart({ navig, isLoading }) {
               onClick={() => navig()}
               className="btn-bouton"
             >
-              start game
+              Start game
             </button>
           ) : (
             <button
               onClick={() => navig()}
               className="btn-disabled"
             >
-              start game
+              Start game
             </button>
           )}
         </div>
