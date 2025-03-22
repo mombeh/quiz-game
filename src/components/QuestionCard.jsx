@@ -9,10 +9,9 @@ export default function QuestionCard({
   time,
 }) {
   function escapeHtml(word) {
-    return he.decode(word)
-
+    return word ? he.decode(word) : ""; // Default to an empty string
   }
-
+  
   return (
     <div className="box">
       <div className="row-time">
