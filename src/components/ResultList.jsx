@@ -8,7 +8,7 @@ export default function ResultList({ tabResponse, score, star }) {
 
   }
   return (
-    
+
     <div className="card-list">
       <div className="card-header ">
         <h2>Scored : {score} / 10{" "}</h2>

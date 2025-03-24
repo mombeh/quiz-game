@@ -166,6 +166,10 @@ tr:hover {
   color: black;
 }
 
+button {
+  cursor: pointer;
+}
+
 @media (max-width: 768px){
   .box {
     width: 300px;

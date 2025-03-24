@@ -17,7 +17,15 @@ export default function WelcomCart({ navig, isLoading }) {
           </ol>
         </div>
         <div className="row">
-          {isLoading ? (
+          <button
+            disabled={isLoading}
+            onClick={() => navig()}
+            className={isLoading ? "btn-disabled" : "btn-bouton"}
+          >
+            Start game
+          </button>
+
+          {/* {isLoading ? (
             <button
               onClick={() => navig()}
               className="btn-bouton"
@@ -31,7 +39,7 @@ export default function WelcomCart({ navig, isLoading }) {
             >
               Start game
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
