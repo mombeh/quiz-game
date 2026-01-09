@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 
 export default function WelcomCart({ navig, isLoading }) {
   return (
-    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-50 p-8 font-sans rounded-lg flex flex-col justify-between">
+    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-[200px] p-8 font-sans rounded-lg flex flex-col justify-between">
       <div>
         <div className="text-center">
           <h1 className="text-2xl font-bold">Welcome to my quiz app</h1>

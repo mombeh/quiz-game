@@ -8,7 +8,7 @@ export default function ResultList({ tabResponse, score, star }) {
 
   }
   return (
-    <div className="p-5 w-[60vw] mx-auto mt-12 bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white rounded-xl">
+    <div className="p-5 w-[60vw] mx-auto mt-[50px] bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white rounded-xl">
       <div className="flex justify-between items-center">
         <h2>Scored : {score} / 10{" "}</h2>
         {score > 5 ? (

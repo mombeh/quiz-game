@@ -9,11 +9,11 @@ export default function QuestionCard({
   time,
 }) {
   function escapeHtml(word) {
-    return word ? he.decode(word) : ""; // Default to an empty string
+    return word ? he.decode(word) : "";
   }
   
   return (
-    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-50 p-8 font-sans rounded-lg flex flex-col justify-between">
+    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-[200px] p-8 font-sans rounded-lg flex flex-col justify-between">
       <div className="flex justify-between text-sm">
         <h3>
           Question{" "}
@@ -28,7 +28,7 @@ export default function QuestionCard({
           Category : <span>{question?.category}</span>
         </h4>
       </div>
-      <div className="text-white mt-15 max-h-[50vh] p-5 flex-1 overflow-y-auto">
+      <div className="text-white mt-[60px] max-h-[50vh] p-5 flex-1 overflow-y-auto">
         <span className="block">{escapeHtml(question?.question)}</span>
       </div>
       <div className="flex gap-5 mt-5 justify-center p-4 relative">

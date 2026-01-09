@@ -1,18 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  background-color: #421424;
-  /* background:linear-gradient(#4f182b, #6f1434, #421424, #6e243e) ; */
-}
+@import "tailwindcss";
 
 button {
   cursor: pointer;
