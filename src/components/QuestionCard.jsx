@@ -13,8 +13,8 @@ export default function QuestionCard({
   }
   
   return (
-    <div className="box">
-      <div className="row-time">
+    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-50 p-8 font-sans rounded-lg flex flex-col justify-between">
+      <div className="flex justify-between text-sm">
         <h3>
           Question{" "}
           <span>
@@ -23,35 +23,27 @@ export default function QuestionCard({
         </h3>
         <h3> Time given: {time} </h3>
       </div>
-      <div className="rowm">
-        <div className="col-6">
-          <h4>
-            Category : <span>{question?.category}</span>
-          </h4>
-        </div>
+      <div className="text-sm mt-8">
+        <h4>
+          Category : <span>{question?.category}</span>
+        </h4>
       </div>
-      <div className="questions">
-        <span className="question">{escapeHtml(question?.question)}</span>
+      <div className="text-white mt-15 max-h-[50vh] p-5 flex-1 overflow-y-auto">
+        <span className="block">{escapeHtml(question?.question)}</span>
       </div>
-      <div className="row-quest">
-        <div className="col">
-          <button
-            onClick={() => next(question, "True")}
-            className="btn"
-          >
-            {" "}
-            True{" "}
-          </button>
-        </div>
-        <div className="col1">
-          <button
-            onClick={() => next(question, "False")}
-            className="btn-btn "
-          >
-            {" "}
-            False
-          </button>
-        </div>
+      <div className="flex gap-5 mt-5 justify-center p-4 relative">
+        <button
+          onClick={() => next(question, "True")}
+          className="px-4 py-2 w-24 h-10 rounded bg-[#671a35] text-white border-none cursor-pointer mt-20 hover:bg-[#5f1b32]"
+        >
+          True
+        </button>
+        <button
+          onClick={() => next(question, "False")}
+          className="px-4 py-2 w-24 h-10 rounded bg-[#671a35] text-white border-none cursor-pointer mt-20 hover:bg-[#5f1b32]"
+        >
+          False
+        </button>
       </div>
     </div>
   );
