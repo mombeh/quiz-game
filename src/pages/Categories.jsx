@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { getCategories } from '../services/api';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { getCategories } from "../services/api";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -23,22 +23,38 @@ export default function Categories() {
   };
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] text-white">
+        <p className="text-lg animate-pulse">Loading categories...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Choose a Category</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className="bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-100"
-            onClick={() => handleCategoryClick(category.id)}
-          >
-            <h2 className="text-lg font-semibold">{category.name}</h2>
-          </div>
-        ))}
+    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4 py-10">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Page Title */}
+        <h1 className="text-3xl font-extrabold text-white text-center mb-10">
+          📚 Choose a Category
+        </h1>
+
+        {/* Category Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((category) => (
+            <div
+              key={category.id}
+              onClick={() => handleCategoryClick(category.id)}
+              className="bg-white/10 backdrop-blur-md text-white p-6 rounded-2xl shadow-xl cursor-pointer
+                         hover:bg-white/20 hover:-translate-y-1 transition-all duration-200"
+            >
+              <h2 className="text-lg font-semibold text-center">
+                {category.name}
+              </h2>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
