@@ -1,48 +1,88 @@
 import PropTypes from "prop-types";
-import he from "he"
+import he from "he";
 
 export default function ResultList({ tabResponse, score, star }) {
-
   function escapeHtml(word) {
-    return he.decode(word)
-
+    return he.decode(word);
   }
+
+  const isWin = score > 5;
+
   return (
-    <div className="p-5 w-[60vw] mx-auto mt-[50px] bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white rounded-xl">
-      <div className="flex justify-between items-center">
-        <h2>Scored : {score} / 10{" "}</h2>
-        {score > 5 ? (
-          <h2>You Won</h2>
-        ) : (
-          <h2>You Loose</h2>
-        )}
-      </div>
-      <div className="mt-8">
-        <table className="w-full border-collapse leading-5 border-r border-t border-gray-300">
-          <thead>
-            <tr>
-              <th className="p-3 text-left border-b border-r border-l border-gray-300">Question</th>
-              <th className="p-3 text-left border-b border-r border-gray-300">Correct answer</th>
-              <th className="p-3 text-left border-b border-r border-gray-300">Your answer</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tabResponse.map((item, index) => {
-              return (
-                <tr key={index + 1} className="hover:bg-gray-100 hover:text-black">
-                  <td className="p-3 text-left border-b border-r border-l border-gray-300">{escapeHtml(item.question)}</td>
-                  <td className="p-3 text-left border-b border-r border-gray-300">{item.correct_answer}</td>
-                  <td className="p-3 text-left border-b border-r border-gray-300">{item.yours}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <div className="text-center mt-5">
-          <button onClick={() => star()} className="px-4 py-3 rounded-lg border-none text-white bg-[#5d162f] font-bold w-36 h-12 mx-2 cursor-pointer hover:bg-[#671a35]">
-            Restart
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4">
+      <div className="bg-white/10 backdrop-blur-md text-white w-full max-w-5xl p-8 rounded-2xl shadow-2xl">
+
+        {/* Result Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h2 className="text-2xl font-bold">
+            Score: <span className="text-emerald-400">{score}</span> / 10
+          </h2>
+
+          <div
+            className={`text-xl font-extrabold px-6 py-2 rounded-xl ${
+              isWin
+                ? "bg-emerald-500/20 text-emerald-300"
+                : "bg-red-500/20 text-red-300"
+            }`}
+          >
+            {isWin ? "🎉 You Won!" : "❌ You Lost"}
+          </div>
+        </div>
+
+        {/* Table */}
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-white/10 text-left">
+                <th className="p-4 font-semibold">Question</th>
+                <th className="p-4 font-semibold">Correct Answer</th>
+                <th className="p-4 font-semibold">Your Answer</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {tabResponse.map((item, index) => {
+                const correct = item.correct_answer === item.yours;
+
+                return (
+                  <tr
+                    key={index}
+                    className={`border-b border-white/10 ${
+                      correct ? "bg-emerald-500/5" : "bg-red-500/5"
+                    }`}
+                  >
+                    <td className="p-4">
+                      {escapeHtml(item.question)}
+                    </td>
+
+                    <td className="p-4 font-semibold text-emerald-300">
+                      {item.correct_answer}
+                    </td>
+
+                    <td
+                      className={`p-4 font-semibold ${
+                        correct ? "text-emerald-300" : "text-red-300"
+                      }`}
+                    >
+                      {item.yours || "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Restart Button */}
+        <div className="text-center mt-10">
+          <button
+            onClick={star}
+            className="px-8 py-4 rounded-xl font-bold text-lg bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition shadow-lg"
+          >
+           Play Again
           </button>
         </div>
+
       </div>
     </div>
   );
