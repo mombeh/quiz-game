@@ -1,7 +1,7 @@
 
 export const getQuestion = async () => {
   try {
-    const reponse = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean")
+    const reponse = await fetch("https://opentdb.com/api.php?amount=10&type=boolean")
     // console.log(reponse)
     const resp = await reponse.json()
     console.log(resp.results)

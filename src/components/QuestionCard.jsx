@@ -23,9 +23,12 @@ export default function QuestionCard({
         </h3>
         <h3> Time given: {time} </h3>
       </div>
-      <div className="text-sm mt-8">
+      <div className="text-sm mt-8 flex justify-between">
         <h4>
           Category : <span>{question?.category}</span>
+        </h4>
+        <h4>
+          Difficulty : <span>{question?.difficulty}</span>
         </h4>
       </div>
       <div className="text-white mt-[60px] max-h-[50vh] p-5 flex-1 overflow-y-auto">
