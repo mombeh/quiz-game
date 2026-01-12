@@ -46,20 +46,35 @@ export default function QuestionCard({
         </div>
 
         {/* Answer Buttons */}
-        <div className="flex gap-6 mt-10 justify-center">
-          <button
-            onClick={() => next(question, "True")}
-            className="w-40 py-4 rounded-xl font-bold text-lg bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition shadow-lg"
-          >
-             True
-          </button>
-
-          <button
-            onClick={() => next(question, "False")}
-            className="w-40 py-4 rounded-xl font-bold text-lg bg-red-500 hover:bg-red-600 active:scale-95 transition shadow-lg"
-          >
-            False
-          </button>
+        <div className="flex gap-4 mt-10 justify-center flex-wrap">
+          {question?.type === "boolean" ? (
+            <>
+              <button
+                onClick={() => next(question, "True")}
+                className="w-40 py-4 rounded-xl font-bold text-lg bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition shadow-lg"
+              >
+                True
+              </button>
+              <button
+                onClick={() => next(question, "False")}
+                className="w-40 py-4 rounded-xl font-bold text-lg bg-red-500 hover:bg-red-600 active:scale-95 transition shadow-lg"
+              >
+                False
+              </button>
+            </>
+          ) : (
+            <>
+              {question?.incorrect_answers?.concat(question?.correct_answer).sort().map((answer, index) => (
+                <button
+                  key={index}
+                  onClick={() => next(question, answer)}
+                  className="min-w-40 py-4 px-6 rounded-xl font-bold text-lg bg-blue-500 hover:bg-blue-600 active:scale-95 transition shadow-lg"
+                >
+                  {escapeHtml(answer)}
+                </button>
+              ))}
+            </>
+          )}
         </div>
 
       </div>

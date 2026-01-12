@@ -10,7 +10,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   const handleNaviagte = () => {
-    navigate("/questionnaire/1")
+    navigate("/categories")
   }
 
   const { setQuestions } = useContext(DataContext)
