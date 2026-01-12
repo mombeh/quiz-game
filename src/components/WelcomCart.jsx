@@ -2,29 +2,57 @@ import { PropTypes } from "prop-types";
 
 export default function WelcomCart({ navig, isLoading }) {
   return (
-    <div className="bg-[linear-gradient(#5c2438,#85304e,#8c2549)] text-white w-[650px] mx-auto mt-[200px] p-8 font-sans rounded-lg flex flex-col justify-between">
-      <div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4">
+      <div className="bg-white/10 backdrop-blur-md text-white w-full max-w-xl p-8 rounded-2xl shadow-2xl flex flex-col gap-8">
+
+        {/* Title */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Welcome to my quiz app</h1>
+          <h1 className="text-3xl font-extrabold tracking-wide">
+            True or False Quiz
+          </h1>
+          <p className="text-sm mt-2 text-white/80">
+            Test your logic under pressure
+          </p>
         </div>
-        <div className="mt-10">
-          <ol className="p-8 mt-10 list-decimal list-inside leading-7">
-            <li>You will be given 10 questions to answer</li>
-            <li>Each question is to be answered in 15 second and if after 15 seconds you
-              <br />haven't answered the question, it authomatically move to another question</li>
-            <li>Answer (True or False)</li>
-            <li><strong>NB:</strong> A question pass without being answered awards no point</li>
-          </ol>
+
+        {/* Instructions */}
+        <div className="bg-white/10 rounded-xl p-6">
+          <ul className="space-y-4 text-sm leading-relaxed">
+            <li>
+              You will answer <strong>10 questions</strong>
+            </li>
+
+            <li>
+              Each question has <strong>15 seconds</strong><br />
+              Unanswered questions are skipped automatically
+            </li>
+
+            <li>
+              Choose <strong>True</strong> or <strong>False</strong>
+            </li>
+
+            <li className="text-yellow-300">
+              <strong>NB:</strong> Skipped questions give no points
+            </li>
+          </ul>
         </div>
-        <div className="text-center mt-12">
+
+        {/* Start Button */}
+        <div className="text-center">
           <button
             disabled={isLoading}
-            onClick={() => navig()}
-            className={`px-4 py-3 rounded-lg border-none text-white font-bold text-lg w-36 cursor-pointer ${isLoading ? "bg-gray-500" : "bg-[#5f1b32] hover:bg-[#671a35]"}`}
+            onClick={navig}
+            className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-200
+              ${
+                isLoading
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-emerald-500 hover:bg-emerald-600 active:scale-95 shadow-lg"
+              }`}
           >
-            Start game
+            {isLoading ? "Loading..." : "Start Game"}
           </button>
         </div>
+
       </div>
     </div>
   );
