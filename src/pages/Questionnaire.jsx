@@ -30,7 +30,6 @@ export default function Questionnaire() {
   };
 
   useEffect(() => {
-    // Only run timer if there’s a current question
     const currentQuestion = tabQuestions[currentQuestionIndex];
     if (!currentQuestion) return; // Prevent timer before questions load
 
@@ -47,7 +46,6 @@ export default function Questionnaire() {
   }, [time, tabQuestions, currentQuestionIndex]);
 
   useEffect(() => {
-    // Reset states before fetching
     setQuestions([]);
     setTabReponse([]);
     setCurrentQuestionIndex(0);
