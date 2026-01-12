@@ -1,26 +1,55 @@
+const TOKEN_KEY = "opentdb_token";
+
+const getToken = async () => {
+  const res = await fetch("https://opentdb.com/api_token.php?command=request");
+  const data = await res.json();
+  return data.token;
+};
 
 export const getCategories = async () => {
   try {
-    const response = await fetch("https://opentdb.com/api_category.php")
-    const resp = await response.json()
-    return resp.trivia_categories
+    const response = await fetch("https://opentdb.com/api_category.php");
+    const resp = await response.json();
+    return resp.trivia_categories;
   } catch (error) {
-    console.error("error to fetch categories", error)
+    console.error("error to fetch categories", error);
+    return null;
   }
-}
+};
 
 export const getQuestion = async (category = null) => {
   try {
-    let url = "https://opentdb.com/api.php?amount=10"
-    if (category) {
-      url += `&category=${category}`
+    let token = localStorage.getItem(TOKEN_KEY);
+
+    if (!token) {
+      token = await getToken();
+      localStorage.setItem(TOKEN_KEY, token);
     }
-    const response = await fetch(url)
-    // console.log(response)
-    const resp = await response.json()
-    console.log(resp.results)
-    return resp.results
+
+    let url = `https://opentdb.com/api.php?amount=10&token=${token}`;
+
+    if (category) {
+      url += `&category=${category}`;
+    }
+
+    const response = await fetch(url);
+
+    // 🚨 Handle rate limit
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const resp = await response.json();
+
+    // 🚨 Handle OpenTDB error codes
+    if (resp.response_code !== 0) {
+      console.warn("OpenTDB error code:", resp.response_code);
+      return null;
+    }
+
+    return resp.results;
   } catch (error) {
-    console.error("error to fetch api", error)
+    console.error("error to fetch questions", error);
+    return null;
   }
-}
+};

@@ -1,5 +1,5 @@
 import QuestionCard from "../components/QuestionCard";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { DataContext } from "../context/context";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
@@ -30,6 +30,7 @@ export default function Questionnaire() {
   };
 
   useEffect(() => {
+    // Only run timer if there’s a current question
     const currentQuestion = tabQuestions[currentQuestionIndex];
     if (!currentQuestion) return; // Prevent timer before questions load
 
@@ -45,32 +46,36 @@ export default function Questionnaire() {
     return () => clearTimeout(t);
   }, [time, tabQuestions, currentQuestionIndex]);
 
-  useEffect(() => {
-    setQuestions([]);
-    setTabReponse([]);
-    setCurrentQuestionIndex(0);
-    setTime(15);
+const fetchedRef = useRef(false);
+
+useEffect(() => {
+  if (fetchedRef.current) return;
+  fetchedRef.current = true;
+
+  setQuestions([]);
+  setTabReponse([]);
+  setCurrentQuestionIndex(0);
+  setTime(15)
 
     const fetchQuestions = async () => {
       const data = await getQuestion(Number(categoryId));
-      if (data && data.length > 0) {
-        setQuestions(data);
-        saveToStorage("questions", data);
-      } else {
-        // If API returns no questions, navigate back safely
-        navigate("/");
+
+      if (!data) {
+        console.warn("Questions not available yet (rate limited)");
+        return; // stay on page
       }
+
+      if (data.length === 0) {
+        alert("No questions available for this category.");
+        return;
+      }
+
+      setQuestions(data);
+      saveToStorage("questions", data);
     };
+
     fetchQuestions();
   }, [categoryId]);
-
-  if (!tabQuestions.length) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        Loading questions...
-      </div>
-    );
-  }
 
   return (
     <QuestionCard
