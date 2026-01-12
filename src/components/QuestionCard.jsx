@@ -14,65 +14,86 @@ export default function QuestionCard({
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4">
-      <div className="bg-white/10 backdrop-blur-md text-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl flex flex-col">
+      <div className="bg-[#020617]/80 backdrop-blur-md text-white w-full max-w-xl p-8 rounded-3xl shadow-2xl flex flex-col">
 
         {/* Top Bar */}
-        <div className="flex justify-between items-center text-sm text-white/90">
+        <div className="flex justify-between items-center text-sm text-white/80">
           <h3 className="font-semibold">
-            Question <span>{number}/{totalQuestion}</span>
+            Question {number}/{totalQuestion}
           </h3>
-
-          <div className="flex items-center gap-2">
-            <span>⏱️</span>
-            <span className="font-semibold">{time}s</span>
-          </div>
+          <span className="flex items-center gap-1">
+            ⏱️ <strong>{time}s</strong>
+          </span>
         </div>
 
         {/* Meta Info */}
-        <div className="flex justify-between text-xs mt-6 text-white/80">
+        <div className="flex justify-between text-xs mt-4 text-white/70">
           <p>
             Category: <span className="font-semibold">{question?.category}</span>
           </p>
           <p>
-            Difficulty: <span className="capitalize font-semibold">{question?.difficulty}</span>
+            Difficulty:{" "}
+            <span className="capitalize font-semibold">
+              {question?.difficulty}
+            </span>
           </p>
         </div>
 
-        {/* Question Card */}
-        <div className="mt-10 bg-white/10 rounded-xl p-6 flex-1 overflow-y-auto">
-          <p className="text-lg leading-relaxed text-center">
-            {escapeHtml(question?.question)}
-          </p>
+        {/* Question */}
+        <div className="mt-8 bg-white/10 rounded-2xl p-6 text-center text-lg font-semibold">
+          {escapeHtml(question?.question)}
         </div>
 
-        {/* Answer Buttons */}
-        <div className="flex gap-4 mt-10 justify-center flex-wrap">
+        {/* Answers */}
+        <div className="flex flex-col gap-4 mt-8">
           {question?.type === "boolean" ? (
             <>
               <button
                 onClick={() => next(question, "True")}
-                className="w-40 py-4 rounded-xl font-bold text-lg bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition shadow-lg"
+                className="w-full flex items-center gap-4 px-6 py-4 rounded-full
+                  border border-emerald-400/60
+                  shadow-[0_0_15px_rgba(34,197,94,0.4)]
+                  hover:bg-emerald-500/20 transition active:scale-95"
               >
+                <span className="w-8 h-8 rounded-full bg-emerald-400 text-black font-bold flex items-center justify-center">
+                  A
+                </span>
                 True
               </button>
+
               <button
                 onClick={() => next(question, "False")}
-                className="w-40 py-4 rounded-xl font-bold text-lg bg-red-500 hover:bg-red-600 active:scale-95 transition shadow-lg"
+                className="w-full flex items-center gap-4 px-6 py-4 rounded-full
+                  border border-red-400/60
+                  shadow-[0_0_15px_rgba(239,68,68,0.4)]
+                  hover:bg-red-500/20 transition active:scale-95"
               >
+                <span className="w-8 h-8 rounded-full bg-red-400 text-black font-bold flex items-center justify-center">
+                  B
+                </span>
                 False
               </button>
             </>
           ) : (
             <>
-              {question?.incorrect_answers?.concat(question?.correct_answer).sort().map((answer, index) => (
-                <button
-                  key={index}
-                  onClick={() => next(question, answer)}
-                  className="min-w-40 py-4 px-6 rounded-xl font-bold text-lg bg-blue-500 hover:bg-blue-600 active:scale-95 transition shadow-lg"
-                >
-                  {escapeHtml(answer)}
-                </button>
-              ))}
+              {question?.incorrect_answers
+                ?.concat(question?.correct_answer)
+                .sort()
+                .map((answer, index) => (
+                  <button
+                    key={index}
+                    onClick={() => next(question, answer)}
+                    className="w-full flex items-center gap-4 px-6 py-4 rounded-full
+                      border border-cyan-400/60
+                      shadow-[0_0_15px_rgba(34,211,238,0.4)]
+                      hover:bg-cyan-500/20 transition active:scale-95"
+                  >
+                    <span className="w-8 h-8 rounded-full bg-cyan-400 text-black font-bold flex items-center justify-center">
+                      {String.fromCharCode(65 + index)}
+                    </span>
+                    {escapeHtml(answer)}
+                  </button>
+                ))}
             </>
           )}
         </div>
