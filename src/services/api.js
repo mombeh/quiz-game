@@ -15,9 +15,9 @@ export const getQuestion = async (category = null) => {
     if (category) {
       url += `&category=${category}`
     }
-    const reponse = await fetch(url)
-    // console.log(reponse)
-    const resp = await reponse.json()
+    const response = await fetch(url)
+    // console.log(response)
+    const resp = await response.json()
     console.log(resp.results)
     return resp.results
   } catch (error) {

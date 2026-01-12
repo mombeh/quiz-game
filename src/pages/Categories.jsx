@@ -36,7 +36,7 @@ export default function Categories() {
 
         {/* Page Title */}
         <h1 className="text-3xl font-extrabold text-white text-center mb-10">
-          📚 Choose a Category
+         Choose a Category
         </h1>
 
         {/* Category Grid */}
