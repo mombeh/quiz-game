@@ -26,7 +26,6 @@ export default function QuestionCard({
           </span>
         </div>
 
-        {/* Meta Info */}
         <div className="flex justify-between text-xs mt-4 text-white/70">
           <p>
             Category: <span className="font-semibold">{question?.category}</span>
@@ -39,12 +38,10 @@ export default function QuestionCard({
           </p>
         </div>
 
-        {/* Question */}
         <div className="mt-8 bg-white/10 rounded-2xl p-6 text-center text-lg font-semibold">
           {escapeHtml(question?.question)}
         </div>
 
-        {/* Answers */}
         <div className="flex flex-col gap-4 mt-8">
           {question?.type === "boolean" ? (
             <>

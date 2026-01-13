@@ -81,7 +81,6 @@ export default function ResultList({ tabResponse, score, star }) {
           </table>
         </div>
 
-        {/* Restart Button */}
         <div className="text-center mt-10">
           <button
             onClick={star}
@@ -92,7 +91,7 @@ export default function ResultList({ tabResponse, score, star }) {
             shadow-[0_0_20px_rgba(16,185,129,0.4)]
           "
           >
-            🔄 Play Again
+           Play Again
           </button>
         </div>
       </div>

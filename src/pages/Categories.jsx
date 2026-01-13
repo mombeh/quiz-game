@@ -33,12 +33,10 @@ return (
   <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4 py-10">
     <div className="max-w-6xl mx-auto">
 
-      {/* Page Title */}
       <h1 className="text-3xl font-extrabold text-white text-center mb-10 tracking-wide">
      Choose a Category
       </h1>
 
-      {/* Category Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => (
           <div

@@ -51,12 +51,10 @@ export const getQuestion = async (category = null, retry = true) => {
 
     const resp = await response.json();
 
-    // ✅ SUCCESS
     if (resp.response_code === 0) {
       return resp.results;
     }
 
-    // 🔄 TOKEN INVALID OR EXHAUSTED → RESET + RETRY ONCE
     if ((resp.response_code === 3 || resp.response_code === 4) && retry) {
       console.warn("Token invalid/exhausted, resetting token...");
       await resetToken();
@@ -64,7 +62,6 @@ export const getQuestion = async (category = null, retry = true) => {
       return getQuestion(category, false);
     }
 
-    // ❌ Other cases
     console.warn("OpenTDB error code:", resp.response_code);
     return null;
 

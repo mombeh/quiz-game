@@ -16,7 +16,7 @@ export default function Questionnaire() {
   const [categoryName, setCategoryName] = useState("");
 
   const handleNext = (question, response) => {
-    if (!question) return; // 🛡 Prevent navigation if question missing
+    if (!question) return;
 
     setTime(15);
     const newQuestion = { ...question, yours: response };
@@ -30,9 +30,8 @@ export default function Questionnaire() {
   };
 
   useEffect(() => {
-    // Only run timer if there’s a current question
     const currentQuestion = tabQuestions[currentQuestionIndex];
-    if (!currentQuestion) return; // Prevent timer before questions load
+    if (!currentQuestion) return;
 
     let t;
     if (time > 0) {
@@ -62,7 +61,7 @@ useEffect(() => {
 
       if (!data) {
         console.warn("Questions not available yet (rate limited)");
-        return; // stay on page
+        return;
       }
 
       if (data.length === 0) {
@@ -76,15 +75,7 @@ useEffect(() => {
 
     fetchQuestions();
   }, [categoryId]);
-
-  if (!tabQuestions.length) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        Loading questions...
-      </div>
-    );
-  }
-
+  
   return (
     <QuestionCard
       next={handleNext}
