@@ -10,19 +10,27 @@ export default function ResultList({ tabResponse, score, star }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4">
-      <div className="bg-white/10 backdrop-blur-md text-white w-full max-w-5xl p-8 rounded-2xl shadow-2xl">
-
+      <div
+        className="
+        bg-[#020617]/80 backdrop-blur-md
+        text-white w-full max-w-5xl p-10
+        rounded-3xl shadow-2xl
+        border border-cyan-400/30
+      "
+      >
         {/* Result Header */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <h2 className="text-2xl font-bold">
-            Score: <span className="text-emerald-400">{score}</span> / 10
+          <h2 className="text-2xl font-extrabold">
+            Score:
+            <span className="text-emerald-400 ml-2">{score}</span>
+            <span className="text-white/70"> / 10</span>
           </h2>
 
           <div
             className={`text-xl font-extrabold px-6 py-2 rounded-xl ${
               isWin
-                ? "bg-emerald-500/20 text-emerald-300"
-                : "bg-red-500/20 text-red-300"
+                ? "bg-emerald-500/20 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                : "bg-red-500/20 text-red-300 shadow-[0_0_15px_rgba(239,68,68,0.4)]"
             }`}
           >
             {isWin ? "🎉 You Won!" : "❌ You Lost"}
@@ -51,7 +59,7 @@ export default function ResultList({ tabResponse, score, star }) {
                       correct ? "bg-emerald-500/5" : "bg-red-500/5"
                     }`}
                   >
-                    <td className="p-4">
+                    <td className="p-4 text-white/90">
                       {escapeHtml(item.question)}
                     </td>
 
@@ -77,12 +85,16 @@ export default function ResultList({ tabResponse, score, star }) {
         <div className="text-center mt-10">
           <button
             onClick={star}
-            className="px-8 py-4 rounded-xl font-bold text-lg bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition shadow-lg"
+            className="
+            px-10 py-4 rounded-xl font-bold text-lg
+            bg-emerald-500 hover:bg-emerald-600
+            active:scale-95 transition-all
+            shadow-[0_0_20px_rgba(16,185,129,0.4)]
+          "
           >
-           Play Again
+            🔄 Play Again
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -44,14 +44,34 @@ export default function SubjectDetail() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0F172A] via-[#0E7490] to-[#22D3EE] px-4">
-      <div className="bg-white/10 backdrop-blur-md text-white w-full max-w-xl p-8 rounded-2xl shadow-2xl text-center flex flex-col gap-6">
-        <h1 className="text-2xl font-bold mb-4">{category.name}</h1>
-        <p className="mb-4">Test your knowledge in {category.name}!</p>
+      <div
+        className="
+        bg-[#020617]/80 backdrop-blur-md
+        text-white w-full max-w-xl p-10
+        rounded-3xl shadow-2xl
+        text-center flex flex-col gap-6
+        border border-cyan-400/30
+      "
+      >
+        <h1 className="text-3xl font-extrabold tracking-wide">
+          {category.name}
+        </h1>
+
+        <p className="text-white/80 text-sm">
+          Test your knowledge in{" "}
+          <span className="font-semibold">{category.name}</span>!
+        </p>
+
         <button
           onClick={handleAnswerQuestions}
-          className="w-full py-4 rounded-xl font-bold text-lg transition-all duration-200 bg-emerald-500 hover:bg-emerald-600 active:scale-95 shadow-lg"
+          className="
+          w-full py-4 rounded-xl font-bold text-lg
+          bg-emerald-500 hover:bg-emerald-600
+          active:scale-95 transition-all duration-200
+          shadow-[0_0_20px_rgba(16,185,129,0.4)]
+        "
         >
-          Answer Questions
+         Start Quiz
         </button>
       </div>
     </div>
