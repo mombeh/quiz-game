@@ -77,6 +77,14 @@ useEffect(() => {
     fetchQuestions();
   }, [categoryId]);
 
+  if (!tabQuestions.length) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Loading questions...
+      </div>
+    );
+  }
+
   return (
     <QuestionCard
       next={handleNext}
