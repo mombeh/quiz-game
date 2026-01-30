@@ -23,7 +23,7 @@ export default function SubjectDetail() {
   }, [id]);
 
   const handleAnswerQuestions = () => {
-    navigate(`/questionnaire/${id}`);
+    navigate(`/difficulty/${id}`);
   };
 
   if (isLoading) {

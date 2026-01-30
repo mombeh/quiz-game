@@ -31,7 +31,7 @@ const resetToken = async () => {
   await fetch(`https://opentdb.com/api_token.php?command=reset&token=${token}`);
 };
 
-export const getQuestion = async (category = null, retry = true) => {
+export const getQuestion = async (category = null, difficulty = null, retry = true) => {
   try {
     let token = localStorage.getItem(TOKEN_KEY);
 
@@ -42,6 +42,7 @@ export const getQuestion = async (category = null, retry = true) => {
 
     let url = `https://opentdb.com/api.php?amount=10&token=${token}`;
     if (category) url += `&category=${category}`;
+    if (difficulty) url += `&difficulty=${difficulty}`;
 
     const response = await fetch(url);
 
@@ -59,7 +60,7 @@ export const getQuestion = async (category = null, retry = true) => {
       console.warn("Token invalid/exhausted, resetting token...");
       await resetToken();
       localStorage.removeItem(TOKEN_KEY);
-      return getQuestion(category, false);
+      return getQuestion(category, difficulty, false);
     }
 
     console.warn("OpenTDB error code:", resp.response_code);

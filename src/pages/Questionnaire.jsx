@@ -7,7 +7,7 @@ import { getQuestion, getCategories } from "../services/api";
 import { saveToStorage } from "../utils";
 
 export default function Questionnaire() {
-  const { categoryId } = useParams();
+  const { categoryId, difficulty } = useParams();
   const [time, setTime] = useState(15);
   const { tabQuestions, setQuestions, setTabReponse, tabReponse } =
     useContext(DataContext);
@@ -57,7 +57,7 @@ useEffect(() => {
   setTime(15)
 
     const fetchQuestions = async () => {
-      const data = await getQuestion(Number(categoryId));
+      const data = await getQuestion(Number(categoryId), difficulty);
 
       if (!data) {
         console.warn("Questions not available yet (rate limited)");
@@ -65,7 +65,7 @@ useEffect(() => {
       }
 
       if (data.length === 0) {
-        alert("No questions available for this category.");
+        alert("No questions available for this category and difficulty.");
         return;
       }
 
@@ -74,7 +74,7 @@ useEffect(() => {
     };
 
     fetchQuestions();
-  }, [categoryId]);
+  }, [categoryId, difficulty]);
   
   return (
     <QuestionCard
