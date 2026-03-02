@@ -51,7 +51,7 @@ This can lead to boredom, low retention, and poor learning outcomes.
 
 ##  Live Demo
 
- [Quiz Game Live](https://quiz-game-silk-xi.vercel.app)  
+ [Quiz Game Live](https://quiz-game-bay-three.vercel.app/)  
 
 ---
 
